@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4efe7">
+  <title>Daymark | Your gentle reminder calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Daymark home"><span class="brand-mark">✦</span> daymark</a>
+      <div class="topbar-actions">
+        <span class="saved-state"><span class="saved-dot"></span> Saved on this device</span>
+        <button class="icon-button" id="notificationButton" type="button" title="Enable browser notifications" aria-label="Enable browser notifications">♢</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="intro-row">
+        <div>
+          <p class="eyebrow">Your time, marked gently</p>
+          <h1 id="monthHeading">September <em>2026</em></h1>
+        </div>
+        <button class="today-button" id="todayButton" type="button">Today <span>↗</span></button>
+      </section>
+
+      <div class="content-grid">
+        <section class="calendar-panel" aria-label="Calendar">
+          <div class="calendar-toolbar">
+            <div class="month-controls">
+              <button class="arrow-button" id="previousMonth" type="button" aria-label="Previous month">←</button>
+              <button class="arrow-button" id="nextMonth" type="button" aria-label="Next month">→</button>
+            </div>
+            <div class="legend"><span class="legend-dot"></span> reminder</div>
+          </div>
+          <div class="calendar-weekdays" aria-hidden="true">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid" role="grid" aria-label="Month dates"></div>
+        </section>
+
+        <aside class="side-panel">
+          <section class="add-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Make a mark</p>
+                <h2>Add a reminder</h2>
+              </div>
+              <span class="plus-sign">+</span>
+            </div>
+            <form id="reminderForm">
+              <label for="reminderTitle">What do you need to remember?</label>
+              <input id="reminderTitle" name="title" type="text" placeholder="e.g. Call Mum" maxlength="80" required>
+              <div class="form-row">
+                <div>
+                  <label for="reminderDate">Date</label>
+                  <input id="reminderDate" name="date" type="date" required>
+                </div>
+                <div>
+                  <label for="reminderTime">Time <span>(optional)</span></label>
+                  <input id="reminderTime" name="time" type="time">
+                </div>
+              </div>
+              <button class="primary-button" type="submit">Add reminder <span>↗</span></button>
+            </form>
+          </section>
+
+          <section class="upcoming-section">
+            <div class="section-heading">
+              <h2>Coming up</h2>
+              <span id="reminderCount">0</span>
+            </div>
+            <div id="upcomingList" class="upcoming-list"></div>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <footer class="footer"><span>Daymark</span><span>Small plans. Clear days.</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
